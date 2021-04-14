@@ -20,15 +20,30 @@ class Node {
         return this.totalWealth;
     }
 
-    // parameters are another Node and the quantity you would like 
-    // another user to pay you. Calls signTransaction on another user
-    // this node is the seller; otherNode is the buyer
+    /*
+     * creates a transaction 
+     * parameters are another Node and the quantity you would like 
+     * that Node to pay you. Calls signTransaction on the other user
+     * this node is the buyer (the one that takes the money); 
+     * otherNode is the seller (that gives the money)
+     * each node's balance will be updated in the Transaction constructor
+     */ 
     makeTransaction(otherNode, numCoin) {
         if(otherNode.getWealth() <= numCoin) {
             return "not possible"; // COME UP WITH A BETTER RESPONSE ONCE APIs ARE SET UP
         }
         else {
-            transaction = new Transaction(otherNode, this, numCoin);
+            try{
+                if(otherNode.getWealth()-numCoin>0) {
+                    transaction = new Transaction(otherNode, this, numCoin, otherNode.signTransaction());
+                }
+                else {
+                    return new Error(); // GET A BETTER RESPONSE ONCE APIs ARE SET UP
+                }
+            }
+            catch(e) {
+                console.error(e);
+            }
         }
     }
 
@@ -38,13 +53,17 @@ class Node {
      * secret key is transformed using a hash function 
      * into a unique public key. The function 
      * then calls addTransaction on the current block.
+     * THIS METHOD SHOULD RETURN THE SIGNATURE
      */
     signTransaction() {
 
     }
 
-    updateBalance () {
-
+    updateBalance (addThisAmt) {
+        var temp = this.totalWealth + addThisAmt;
+        if(temp > 0) {
+            this.totalWealth = temp;
+        }
     }
 }
 

@@ -1,15 +1,39 @@
 class Transaction {
 
-    constructor(buyNode, sellNode, amount) {
+    constructor(buyNode, sellNode, amount, sign) {
         this.buyer = buyNode;
         this.seller = sellNode;
         this.amt = amount;
+        this.signature = sign;
         this.timestamp = Date();
-        this.status = "incomplete";
+        this.status = "noMoneyTransferredYet";
+        this.updateNodesWealth();
+    }
+
+    /*
+     * the below code should be edited; the transaction should be added
+     * to a block before the money is transferred
+     */
+    updateNodesWealth() {
+        this.buyer.updateBalance(this.amt);
+        this.seller.updateBalance(-1*this.amt);
+        this.updateStatus("moneyTransferred;NotInBlockYet");
     }
 
     updateStatus(newStat) {
         this.status = newStat;
+    }
+
+    getBuyer() {
+        return this.buyer;
+    }
+
+    getSeller() {
+        return this.buyer;
+    }
+
+    getAmt() {
+        return this.amt;
     }
 
 }
