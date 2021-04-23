@@ -8,11 +8,18 @@ class Transaction {
         this.timestamp = Date();
         this.status = "noMoneyTransferredYet";
         this.updateNodesWealth();
+        this.id = /* figure out how to generate random double */
+    }
+
+    signatureIsValid() {
+        return sellNode.verifyTransaction(this.signature, this.id);
     }
 
     /*
      * the below code should be edited; the transaction should be added
-     * to a block before the money is transferred
+     * to a block before the money is transferred (note from grace:
+     * we can just call this method in the addTransaction method
+     * after verifying that signatures are valid)
      */
     updateNodesWealth() {
         this.buyer.updateBalance(this.amt);
@@ -34,6 +41,10 @@ class Transaction {
 
     getAmt() {
         return this.amt;
+    }
+
+    getId(){
+        return this.id;
     }
 
 }
