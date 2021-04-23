@@ -65,6 +65,12 @@ class Node {
             this.totalWealth = temp;
         }
     }
+
+    verifyTransaction(id, signature)
+    {
+        //Find function that depends on two variables
+        /* return signature == function(this.secretKey, id); */
+    }
 }
 
 module.exports = Node;
