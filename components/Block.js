@@ -1,26 +1,44 @@
 Transaction = require('./Transaction');
 
 class Block{
-    constructor(index, timestamp, precedingHash=" ", proofOfWork){
-        this.index = index;
+    constructor(timestamp, precedingHash, proofOfWork){
         this.timestamp = timestamp;
         data = [];
         this.precedingHash = precedingHash;
-        this.hash = this.computeHash();
-        this.proofOfWork = proofOfWork;   
+        /*this.hash = this.computeHash();*/
+        this.proofOfWork = "";   
     }
 
     /*
      * adds transaction to the block
      */
-    addTransaction(transaction, signature)
+    addTransaction(transaction)
     {
-        data.push(transaction);
-        transaction.updateStat("completed");
-
-        if(data.length>=20)
+        if(transaction.signatureIsValid())
         {
-            /*Network.computeHash();*/
+            data.push(transaction);
+            transaction.updateNodesWealth();
+            transaction.updateStat("completed");
+            if(data.length>=20)
+            {
+                /*Network.computeHash();*/
+            }
         }
+    }
+
+    getProofOfWork()
+    {
+        return this.proofOfWork;
+    }
+
+    /* is there any way to make this a private method?*/
+    setProofOfWork(proof)
+    {
+        proofOfWork = proof;
+    }
+
+    getHash()
+    {
+        /* return function(proofOfWork); */
     }
 }
