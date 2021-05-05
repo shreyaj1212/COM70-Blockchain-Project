@@ -1,6 +1,6 @@
 Transaction = require('./Transaction');
 
-class Node {
+class User {
     constructor() {
         this.totalWealth = 0;
         this.ipAddress = "";
@@ -73,4 +73,4 @@ class Node {
     }
 }
 
-module.exports = Node;
+module.exports = User;
