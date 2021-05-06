@@ -8,7 +8,7 @@ class Transaction {
         this.timestamp = Date();
         this.status = "noMoneyTransferredYet";
         this.updateNodesWealth();
-        this.id = /* figure out how to generate random double */
+        // this.id = /* figure out how to generate random double */
     }
 
     signatureIsValid() {
