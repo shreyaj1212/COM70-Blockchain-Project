@@ -13,9 +13,8 @@ class Blockchain {
 
     addNewBlock(Block)
     {
-        /* hash = hash_funciton(proofOfWork) */
-        /*if(Block.getHash == function(lastBlock().getProofOfWork())
-        && function(Block.getProofOfWork()).substr(0,4) == "0000" )
+        /*if(Block.getPrecedingHash() == lastBlock().getHash())
+        && createHmac('sha256', Block.getProofOfWork()).digest('hex').substr(0,1) == "0000" )
         {
             chain.push(Block);
         }*/
