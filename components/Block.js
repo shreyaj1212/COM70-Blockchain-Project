@@ -1,4 +1,7 @@
 Transaction = require('./Transaction');
+const {
+    createHmac,
+  } = require('crypto');
 
 class Block{
     constructor(timestamp, precedingHash, proofOfWork){
@@ -39,6 +42,6 @@ class Block{
 
     getHash()
     {
-        /* return function(proofOfWork); */
+        createHmac('sha256', proofOfWork).digest('hex');
     }
 }
