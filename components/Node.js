@@ -1,6 +1,9 @@
 Transaction = require('./Transaction');
+const {
+    createHmac,
+  } = require('crypto');
 
-class User {
+class Node {
     constructor() {
         this.totalWealth = 0;
         this.ipAddress = "";
@@ -54,8 +57,11 @@ class User {
      * into a unique public key. The function 
      * then calls addTransaction on the current block.
      * THIS METHOD SHOULD RETURN THE SIGNATURE
+     * id is the transaction id
      */
-    signTransaction() {
+    signTransaction(id) {
+        /* option to decline */
+        /* else return function(this.secretKey, id); */
 
     }
 
@@ -68,9 +74,8 @@ class User {
 
     verifyTransaction(id, signature)
     {
-        //Find function that depends on two variables
-        /* return signature == function(this.secretKey, id); */
+        return signature == createHmac('sha256', this.secretKey).update(id).digest('hex');
     }
 }
 
-module.exports = User;
+module.exports = Node;
