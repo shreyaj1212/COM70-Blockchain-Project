@@ -8,7 +8,7 @@ class Block{
         this.timestamp = timestamp;
         data = [];
         this.precedingHash = precedingHash;
-        /*this.hash = this.computeHash();*/
+        this.hash = "";
         this.proofOfWork = "";   
     }
 
@@ -37,11 +37,12 @@ class Block{
     /* is there any way to make this a private method?*/
     setProofOfWork(proof)
     {
-        proofOfWork = proof;
+        this.proofOfWork = proof;
+        this.hash = createHmac('sha256', proofOfWork).digest('hex');
     }
 
     getHash()
     {
-        createHmac('sha256', proofOfWork).digest('hex');
+        return this.hash;
     }
 }
