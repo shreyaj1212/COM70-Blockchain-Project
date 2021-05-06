@@ -11,13 +11,13 @@ class User {
         this.secretKey = "";
     }
 
-    // constructor for miners
+    /*// constructor for miners
     constructor(isMiner) {
         this.totalWealth = 0;
         this.ipAddress = "";
         this.isMiner = isMiner;
         this.secretKey = "";
-    }
+    }*/
 
     getWealth() {
         return this.totalWealth;
@@ -60,8 +60,10 @@ class User {
      * id is the transaction id
      */
     signTransaction(id) {
-        /* option to decline */
-        /* else return function(this.secretKey, id); */
+        if(Math.floor(Math.random()*4)<3)
+         return createHmac('sha256', this.secretKey).update(id).digest('hex');
+        else
+         return null;
 
     }
 
@@ -74,8 +76,8 @@ class User {
 
     verifyTransaction(id, signature)
     {
-        return signature == createHmac('sha256', this.secretKey).update(id).digest('hex');
+        return signature!=null&&signature == createHmac('sha256', this.secretKey).update(id).digest('hex');
     }
 }
 
-module.exports = Node;
+module.exports = User;
