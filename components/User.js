@@ -3,7 +3,7 @@ const {
     createHmac,
   } = require('crypto');
 
-class Node {
+class User {
     constructor() {
         this.totalWealth = 0;
         this.ipAddress = "";

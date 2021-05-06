@@ -1,4 +1,5 @@
 const express = require('express');
+const User = require('./components/User');
 
 const app = express();
 
@@ -7,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/makeNode', (req,res) => {
-    
+    var newUser = new User();
 })
 
 const PORT = process.env.PORT || 5000;
