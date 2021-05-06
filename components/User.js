@@ -4,7 +4,7 @@ const {
   } = require('crypto');
 
 class User {
-    constructor() {
+    constructor(wealth, id) {
         this.totalWealth = 0;
         this.ipAddress = "";
         this.isMiner = False;

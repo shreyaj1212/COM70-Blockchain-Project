@@ -11,18 +11,22 @@ const users = [];
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
+
+// GET THE FRONT PAGE OF WEBSITE
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public','index.html'));
-    // res.send('<head><link rel="stylesheet" href="./style.css"></head><body><h1>Shreya and Grace\'s Blockchain Project</h1></body>');
 });
 
+// VIEW ALL THE USERS
 app.get('/api/users', (req, res) => {
     res.json(users);
 });
 
+// MAKE NEW USER
 app.post('/api/makeUser', (req,res) => {
-    var newUser = new User();
-    res.send(req.body);
+    var newUser = new User(req.body.wealth, uuid.v4());
+    users.push(newUser);
+    res.send("Added the new user successfully");
 }); 
 
 const PORT = process.env.PORT || 5000;
