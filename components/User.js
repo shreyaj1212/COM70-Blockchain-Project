@@ -4,11 +4,10 @@ const {
   } = require('crypto');
 
 class User {
-    constructor(wealth, id) {
-        this.totalWealth = 0;
-        this.ipAddress = "";
-        this.isMiner = false;
-        this.secretKey = "";
+    constructor(wealth, ipadd, secretkey) {
+        this.totalWealth = wealth;
+        this.ipAddress = ipadd;
+        this.secretKey = secretkey;
     }
 
     /*// constructor for miners

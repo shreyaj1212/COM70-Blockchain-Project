@@ -2,10 +2,12 @@ const express = require('express');
 const uuid = require('uuid');
 const path = require('path');
 const User = require('./components/User');
+const Blockchain = require('./components/Blockchain');
 
 const app = express();
 
 const users = [];
+const blockchain = new Blockchain();
 
 // body parser middleware
 app.use(express.json());
@@ -27,10 +29,17 @@ app.post('/api/makeUser', (req,res) => {
     // User constructor takes in wealth and id
     // randomly assigning a new id for each user for now
     // wealth can be whatever is specified in the body (probably 0)
-    var newUser = new User(req.body.wealth, uuid.v4());
+    var newUser = new User(req.body.wealth, req.body.name, uuid.v4());
     users.push(newUser);
+    console.log(users);
+    console.log("*******");
     res.send("Added the new user successfully");
 }); 
+
+// MAKE NEW TRANSACTION
+app.post('/api/makeTransaction', (req,res) => {
+
+});
 
 const PORT = process.env.PORT || 5000;
 
