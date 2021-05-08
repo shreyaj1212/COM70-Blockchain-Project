@@ -1,23 +1,17 @@
-Node = require('./Node');
+Node = require('./User');
 
 class Blockchain {
-    constructor(owner) {
-        this.owner = owner;
+    constructor() {
+        // this.firstNode = startNode;
         this.chain = [];
     }
 
-    lastBlock()
-    {
-        return chain[chain.length-1];
+    addBlockToChain(block) {
+        this.chain.push(block);
     }
 
-    addNewBlock(Block)
-    {
-        if((Block.getPrecedingHash() === null||Block.getPrecedingHash() == lastBlock().getHash())
-        && createHmac('sha256', Block.getProofOfWork()).digest('hex').substr(0,1) == "0000" )
-        {
-            chain.push(Block);
-        }
+    getLastBlock() {
+
     }
 }
 

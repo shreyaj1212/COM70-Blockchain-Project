@@ -4,15 +4,15 @@ const path = require('path');
 const User = require('./components/User');
 const Blockchain = require('./components/Blockchain');
 const Block = require('./components/Block');
+const Transaction = require('./components/Transaction');
 
 const app = express();
 
 const users = [];
 const blockchain = new Blockchain();
 
-// not sure what the parameters should be at the initial point for 
-// the starting block
 const startBlock = new Block(null);
+var curBlock = startBlock;
 
 // body parser middleware
 app.use(express.json());
@@ -43,7 +43,31 @@ app.post('/api/makeUser', (req,res) => {
 
 // MAKE NEW TRANSACTION
 app.post('/api/makeTransaction', (req,res) => {
+    var newTransaction = new Transaction(req.body.buyerId, req.body.sellerId, req.body.amount, req.body.signature);
+    // NEED TO ADD CODE ABOUT VERIFYING THE TRANSACTION
+    /*
+     if(insufficient funds on buyer) {
+        res.send("Could not add new transaction due to insufficient funds");
+     }
+     */
 
+    if(curBlock.canAddTrans()) {
+        curBlock.addTransaction(newTransaction);
+    }
+    else {
+        var tempPreceedingHash = curBlock.getHash();
+        /*
+         * here I have created the new block (please correct if I did this wrong)
+         * but rn for me the Blockchain class is empty, and so I haven't added
+         * any of the blocks to the blockchain 
+         * 
+         * but we should add a block to the blockchain when it's created (noting
+         * this for consistency)
+         */
+        curBlock = new Block(tempPreceedingHash);
+        curBlock.addTransaction(newTransaction);
+    }
+    res.send("Successfully added new transaction");
 });
 
 const PORT = process.env.PORT || 5000;

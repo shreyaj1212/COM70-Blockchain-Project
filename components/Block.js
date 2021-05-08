@@ -6,7 +6,7 @@ const {
 class Block{
     constructor(precedingHash){
         // this.timestamp = timestamp;
-        data = [];
+        this.data = [];
         this.maxTransactions = 20;
         this.precedingHash = precedingHash;
         this.hash = "";
@@ -15,6 +15,14 @@ class Block{
 
     getMaxTransactions() {
         return this.maxTransactions;
+    }
+
+    getCurNumTransactions() {
+        return this.data.length;
+    }
+
+    canAddTrans() {
+        return this.data.length < this.maxTransactions;
     }
 
     /*
