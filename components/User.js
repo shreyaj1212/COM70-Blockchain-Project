@@ -7,7 +7,7 @@ class User {
     constructor(wealth, id) {
         this.totalWealth = 0;
         this.ipAddress = "";
-        this.isMiner = False;
+        this.isMiner = false;
         this.secretKey = "";
     }
 
