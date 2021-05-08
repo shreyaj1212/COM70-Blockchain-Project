@@ -32,13 +32,10 @@ class Block{
     {
         if(transaction.signatureIsValid())
         {
-            data.push(transaction);
+            this.data.push(transaction);
             transaction.updateNodesWealth();
             transaction.updateStat("completed");
-            if(data.length>=this.maxTransactions)
-            {
-                /*Network.computeHash();*/
-            }
+            /*Network.computeHash();*/
         }
     }
 

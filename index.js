@@ -45,11 +45,14 @@ app.post('/api/makeUser', (req,res) => {
 app.post('/api/makeTransaction', (req,res) => {
     var newTransaction = new Transaction(req.body.buyerId, req.body.sellerId, req.body.amount, req.body.signature);
     // NEED TO ADD CODE ABOUT VERIFYING THE TRANSACTION
-    /*
-     if(insufficient funds on buyer) {
+
+    if(!newTransaction.signatureIsValid()) {
+        res.send("Cannot add new transaction because signature is invalid");
+    }
+    
+    if(!newTransaction.updateNodesWealth()) {
         res.send("Could not add new transaction due to insufficient funds");
-     }
-     */
+    }
 
     if(curBlock.canAddTrans()) {
         curBlock.addTransaction(newTransaction);

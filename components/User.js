@@ -70,7 +70,9 @@ class User {
         var temp = this.totalWealth + addThisAmt;
         if(temp > 0) {
             this.totalWealth = temp;
+            return true;
         }
+        else return false;
     }
 
     verifyTransaction(id, signature)

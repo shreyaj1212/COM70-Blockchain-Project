@@ -10,7 +10,6 @@ class Transaction {
         this.signature = sign;
         this.timestamp = Date();
         this.status = "noMoneyTransferredYet";
-        this.updateNodesWealth();
         this.id = randomString();
     }
 
@@ -25,9 +24,10 @@ class Transaction {
      * after verifying that signatures are valid)
      */
     updateNodesWealth() {
+        if(!this.seller.updateBalance(-1*this.amt)) return false;
         this.buyer.updateBalance(this.amt);
-        this.seller.updateBalance(-1*this.amt);
         this.updateStatus("moneyTransferred;NotInBlockYet");
+        return true;
     }
 
     updateStatus(newStat) {
