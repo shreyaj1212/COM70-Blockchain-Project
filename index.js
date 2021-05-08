@@ -24,6 +24,9 @@ app.get('/api/users', (req, res) => {
 
 // MAKE NEW USER
 app.post('/api/makeUser', (req,res) => {
+    // User constructor takes in wealth and id
+    // randomly assigning a new id for each user for now
+    // wealth can be whatever is specified in the body (probably 0)
     var newUser = new User(req.body.wealth, uuid.v4());
     users.push(newUser);
     res.send("Added the new user successfully");

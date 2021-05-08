@@ -55,7 +55,7 @@ class Transaction {
         while(true)
         {
             var s = "";
-            for(int i = 0; i<5; i++)
+            for(var i = 0; i<5; i++)
             {
                 s = s+alphabet[Math.floor(Math.random()*26)];
             }
