@@ -4,12 +4,17 @@ const {
   } = require('crypto');
 
 class Block{
-    constructor(timestamp, precedingHash, proofOfWork){
-        this.timestamp = timestamp;
+    constructor(precedingHash){
+        // this.timestamp = timestamp;
         data = [];
+        this.maxTransactions = 20;
         this.precedingHash = precedingHash;
         this.hash = "";
-        this.proofOfWork = "";   
+        this.proofOfWork = "";
+    }
+
+    getMaxTransactions() {
+        return this.maxTransactions;
     }
 
     /*
@@ -22,7 +27,7 @@ class Block{
             data.push(transaction);
             transaction.updateNodesWealth();
             transaction.updateStat("completed");
-            if(data.length>=20)
+            if(data.length>=this.maxTransactions)
             {
                 /*Network.computeHash();*/
             }

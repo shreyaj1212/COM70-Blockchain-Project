@@ -3,11 +3,16 @@ const uuid = require('uuid');
 const path = require('path');
 const User = require('./components/User');
 const Blockchain = require('./components/Blockchain');
+const Block = require('./components/Block');
 
 const app = express();
 
 const users = [];
 const blockchain = new Blockchain();
+
+// not sure what the parameters should be at the initial point for 
+// the starting block
+const startBlock = new Block(null);
 
 // body parser middleware
 app.use(express.json());
