@@ -13,7 +13,7 @@ class Blockchain {
 
     addNewBlock(Block)
     {
-        if((Block.getPrecedingHash() == ""||Block.getPrecedingHash() == lastBlock().getHash())
+        if((Block.getPrecedingHash() === null||Block.getPrecedingHash() == lastBlock().getHash())
         && createHmac('sha256', Block.getProofOfWork()).digest('hex').substr(0,1) == "0000" )
         {
             chain.push(Block);
