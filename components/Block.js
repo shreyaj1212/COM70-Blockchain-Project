@@ -1,7 +1,7 @@
 Transaction = require('./Transaction');
-const {
-    createHmac,
-  } = require('crypto');
+// const {
+//     createHmac,
+//   } = require('crypto');
 
 class Block{
     constructor(precedingHash){
@@ -59,3 +59,5 @@ class Block{
         return this.hash;
     }
 }
+
+module.exports = Block;
