@@ -1,4 +1,7 @@
 User = require('./User');
+const {
+    createHmac,
+  } = require('crypto');
 
 class Blockchain {
     constructor(owner) {
