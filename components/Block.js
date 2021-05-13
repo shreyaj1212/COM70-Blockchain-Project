@@ -55,6 +55,11 @@ class Block{
     {
         return this.hash;
     }
+
+    getPrecedingHash()
+    {
+        return this.precedingHash;
+    }
 }
 
 module.exports = Block;
