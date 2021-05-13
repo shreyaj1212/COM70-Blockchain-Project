@@ -13,11 +13,11 @@ const blockchain = new Blockchain();
 
 const startBlock = new Block(null);
 var curBlock = startBlock;
+blockchain.addNewBlock(curBlock);
 
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-
 
 // GET THE FRONT PAGE OF WEBSITE
 app.get('/', (req, res) => {
@@ -60,14 +60,11 @@ app.post('/api/makeTransaction', (req,res) => {
     else {
         var tempPreceedingHash = curBlock.getHash();
         /*
-         * here I have created the new block (please correct if I did this wrong)
-         * but rn for me the Blockchain class is empty, and so I haven't added
-         * any of the blocks to the blockchain 
-         * 
-         * but we should add a block to the blockchain when it's created (noting
+         * we should add a block to the blockchain when it's created (noting
          * this for consistency)
          */
         curBlock = new Block(tempPreceedingHash);
+        blockchain.addNewBlock(curBlock);
         curBlock.addTransaction(newTransaction);
     }
     res.send("Successfully added new transaction");

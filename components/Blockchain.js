@@ -11,12 +11,12 @@ class Blockchain {
         return chain[chain.length-1];
     }
 
-    addNewBlock(Block)
+    addNewBlock(block1)
     {
-        if((Block.getPrecedingHash() === null||Block.getPrecedingHash() == lastBlock().getHash())
-        && createHmac('sha256', Block.getProofOfWork()).digest('hex').substr(0,1) == "0000" )
+        if((block1.getPrecedingHash() === null||block1.getPrecedingHash() == lastBlock().getHash())
+        && createHmac('sha256', block1.getProofOfWork()).digest('hex').substr(0,1) == "0000" )
         {
-            chain.push(Block);
+            chain.push(block1);
         }
     }
 }
