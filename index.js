@@ -41,6 +41,20 @@ app.post('/api/makeUser', (req,res) => {
     res.send("Added the new user successfully");
 }); 
 
+function computeProof()
+{
+    i=0;
+    while(true)
+    {
+        let proof = users[i].compProof();
+        if(proof.isString())
+        {
+            users[i].updateBalance(12);
+            return proof;
+        }
+    }
+}
+
 // MAKE NEW TRANSACTION
 app.post('/api/makeTransaction', (req,res) => {
     var newTransaction = new Transaction(req.body.buyerId, req.body.sellerId, req.body.amount, req.body.signature);
@@ -59,6 +73,7 @@ app.post('/api/makeTransaction', (req,res) => {
     }
     else {
         var tempPreceedingHash = curBlock.getHash();
+        curBlock.setProofOfWork(computeProof());
         /*
          * we add a block to the blockchain when it's created (noting
          * this for consistency)
