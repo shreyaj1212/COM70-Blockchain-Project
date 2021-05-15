@@ -22,6 +22,10 @@ class User {
         return this.totalWealth;
     }
 
+    getName() {
+        return this.ipAddress;
+    }
+
     /*
      * creates a transaction 
      * parameters are another Node and the quantity you would like 

@@ -70,8 +70,25 @@ app.post('/api/makeTransaction', (req,res) => {
     res.send("Successfully added new transaction");
 });
 
+// VIEW THE BLOCKCHAIN
 app.get('/api/getBlockchain', (req, res) => {
+    // get the blockchain
+    // iterate to get each block
+    // within each block get relevant info of each transaction
+    res.json(blockchain);
+});
 
+// UPDATE A USER'S WEALTH
+app.put('/api/updateUserWealth', (req,res) => {
+    for(var i = 0;i< users.length;i++) {
+        if(users[i].getName()==req.body.name) {
+            if(users[i].updateBalance(req.body.amount)) {
+                res.send("Successfully updated balance");
+            }
+            else res.send("Could not update balance due to insignificant funds");
+        }
+        res.send("This user does not exist");
+    }
 });
 
 const PORT = process.env.PORT || 5000;
