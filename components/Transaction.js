@@ -1,18 +1,26 @@
 const uuid = require('uuid');
 class Transaction {
 
-    constructor(buyNode, sellNode, amount, sign) {
+    /*
+     * SELLER = GIVER
+     * BUYER = TAKER
+     */
+    constructor(buyNode, sellNode, amount) {
         this.buyer = buyNode;
         this.seller = sellNode;
         this.amt = amount;
-        this.signature = sign;
+        this.signature = null;
         //this.timestamp = Date();
         this.status = "noMoneyTransferredYet";
         this.id = uuid.v4();
     }
 
+    signTransaction(sign) {
+        this.signature = sign;
+    }
+
     signatureIsValid() {
-        return sellNode.verifyTransaction(this.signature, this.id);
+        return this.seller.verifyTransaction(this.signature, this.id);
     }
 
     /*

@@ -18,7 +18,7 @@ class Blockchain {
     {
         if(block1.getPrecedingHash() === null||block1.getPrecedingHash() == lastBlock().getHash())
         {
-            chain.push(block1);
+            this.chain.push(block1);
         }
     }
 }

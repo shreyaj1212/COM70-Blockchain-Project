@@ -1,8 +1,47 @@
-<h1>Blockchain Simulation</h1>
-<h2>By Shreya Jain and Grace Luettgen</h2>
+<h1>{{title}}</h1>
+<p>By Shreya Jain and Grace Luettgen</p>
 
+<h3>Add A User to the Simulation</h3>
+<form action="/api/makeUser" method="POST" class="mb-4">
+    <div class="form-group">
+         <label for="name">Name</label>
+         <input type="text" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+         <label for="wealth">Starting Wealth Amount (Recommended: 0)</label>
+         <input type="number" name="wealth" class="form-control">
+    </div>
+    <input type="submit" value="Add User" class="btn btn-primary btn-block">
+</form>
+
+<h3>List of Users Currently in the Simulation and Amount of Coin they Have</h3>
 <ul class="list-group">
     {{#each users}}
-    <li class="list-group-item">{{this.name}}</li>
+    <li class="list-group-item">{{this.ipAddress}}: {{this.totalWealth}}</li>
     {{/each}}
 </ul>
+
+<h3>Create A Transaction</h3>
+<form action="/api/makeTransaction" method="POST" class="mb-4">
+    <div class="form-group">
+         <label for="sellerId">Giver Name</label>
+         <input type="text" name="sellerId" class="form-control">
+    </div>
+    <div class="form-group">
+         <label for="buyerId">Taker Name</label>
+         <input type="text" name="buyerId" class="form-control">
+    </div>
+    <div class="form-group">
+         <label for="amount">amount</label>
+         <input type="number" name="amount" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="transactionSimType">Transaction Simulation Type</label>
+        <select name = "dropdown">
+            <option value = "signed">Signed</option>
+            <option value = "not signed">Not Signed</option>
+            <option value = "fraud">Fraud</option>
+        </select>
+    </div>
+    <input type="submit" value="Add Transaction" class="btn btn-primary btn-block">
+</form>

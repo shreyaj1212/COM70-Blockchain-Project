@@ -20,6 +20,8 @@
   "homepage": "https://github.com/shreyaj1212/COM70-Blockchain-Project#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "handlebars": "^4.7.7",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

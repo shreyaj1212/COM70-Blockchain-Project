@@ -27,6 +27,10 @@ class User {
         return this.ipAddress;
     }
 
+    getKey() {
+        return this.secretKey;
+    }
+
     /*
      * creates a transaction 
      * parameters are another Node and the quantity you would like 
