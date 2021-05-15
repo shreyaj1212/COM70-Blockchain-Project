@@ -35,7 +35,6 @@ class Block{
             this.data.push(transaction);
             transaction.updateNodesWealth();
             transaction.updateStat("completed");
-            /*Network.computeHash();*/
         }
     }
 
