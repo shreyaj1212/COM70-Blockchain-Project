@@ -1,4 +1,4 @@
-const uuid = require('uuid')
+const uuid = require('uuid');
 class Transaction {
 
     constructor(buyNode, sellNode, amount, sign) {
@@ -6,9 +6,9 @@ class Transaction {
         this.seller = sellNode;
         this.amt = amount;
         this.signature = sign;
-        this.timestamp = Date();
+        //this.timestamp = Date();
         this.status = "noMoneyTransferredYet";
-        this.id = randomString();
+        this.id = uuid.v4();
     }
 
     signatureIsValid() {
@@ -47,12 +47,5 @@ class Transaction {
     getId(){
         return this.id;
     }
-
-    randomString()
-    {
-        return uuid.v4();
-    }
-
 }
-
 module.exports = Transaction;
