@@ -110,9 +110,13 @@ app.post('/api/makeTransaction', (req,res) => {
             res.send("Cannot add new transaction because signature is invalid");
         }
     
-        // if(!newTransaction.updateNodesWealth()) {
-        //     res.send("Could not add new transaction due to insufficient funds");
-        // }
+        console.log("take 1");
+        console.log(newTransaction.updateNodesWealth());
+
+        console.log("if statement - take 2");
+        if(!newTransaction.updateNodesWealth()) {
+            res.send("Could not add new transaction due to insufficient funds");
+        }
 
         // ADDING TO BLOCKCHAIN
         if(curBlock.canAddTrans()) {
@@ -128,8 +132,10 @@ app.post('/api/makeTransaction', (req,res) => {
             blockchain.addNewBlock(curBlock);
             curBlock.addTransaction(newTransaction);
         }
+        console.log("it gets to checkpoint 3");
         if(req.body.transactionSimType == "signed") {
-            res.send(req.body.sellerId + " gave " + req.body.buyerId +" " + req.body.amount + " coins.");
+            res.send(req.body.sellerId + " gave " + req.body.buyerId +" " + req.body.amount + " coins." + giver.getName() + " now has "
+            + giver.getWealth() + " coins.");
         }
         else if(req.body.transactionSimType == "fraud") {
             res.send("nah fraud");

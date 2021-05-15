@@ -1,4 +1,5 @@
 const uuid = require('uuid');
+const User = require('./User');
 class Transaction {
 
     /*
@@ -30,9 +31,15 @@ class Transaction {
      * after verifying that signatures are valid)
      */
     updateNodesWealth() {
+        console.log("got into updateNodesWealth");
         if(!this.seller.updateBalance(-1*this.amt)) return false;
+        console.log("did not return false");
+        console.log(typeof seller);
+        console.log(typeof buyer);
         this.buyer.updateBalance(this.amt);
+        console.log("wealths for both updated");
         this.updateStatus("moneyTransferred;NotInBlockYet");
+        console.log("transaction status updated");
         return true;
     }
 
@@ -56,4 +63,10 @@ class Transaction {
         return this.id;
     }
 }
+
+let u1 = new User(5000, undefined, undefined);
+let u2 = new User(2000, undefined, undefined);
+let t = new Transaction(u1, u2, 1000);
+t.updateNodesWealth();
 module.exports = Transaction;
+

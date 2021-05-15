@@ -6,7 +6,7 @@ const {
  
 class User {
     constructor(wealth, ipadd, secretkey) {
-        this.totalWealth = wealth;
+        this.totalWealth = Number(wealth);
         this.ipAddress = ipadd;
         this.secretKey = secretkey;
     }
@@ -75,8 +75,14 @@ class User {
 
     }
 
+    canUpdateBalance(amt) {
+        return (this.totalWealth + amt) > 0;
+    }
+
     updateBalance (addThisAmt) {
-        var temp = this.totalWealth + addThisAmt;
+        var temp = this.totalWealth + Number(addThisAmt);
+        console.log("temp=" + temp);
+        console.log(temp>0);
         if(temp > 0) {
             this.totalWealth = temp;
             return true;
@@ -87,7 +93,6 @@ class User {
     verifyTransaction(id, signature)
     {
         return signature!=null&&signature == createHmac('sha256', this.secretKey).update(id).digest('hex');
-        console.log(signature + " = " + createHmac('sha256', this.secretKey).update(id).digest('hex'));
     }
 
     compProof()
