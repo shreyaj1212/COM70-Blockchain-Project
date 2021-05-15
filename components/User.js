@@ -1,8 +1,9 @@
 Transaction = require('./Transaction');
+const uuid = require('uuid');
 const {
     createHmac,
   } = require('crypto');
-
+ 
 class User {
     constructor(wealth, ipadd, secretkey) {
         this.totalWealth = wealth;
@@ -83,6 +84,20 @@ class User {
     {
         return signature!=null&&signature == createHmac('sha256', this.secretKey).update(id).digest('hex');
     }
-}
 
+    compProof()
+    {
+        //come up with random string
+        let rand = uuid.v4();
+        console.log(rand);
+        if(Number(createHmac('sha256', rand).digest('hex').substr(0,1))<5)
+        {
+            return rand;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
 module.exports = User;
