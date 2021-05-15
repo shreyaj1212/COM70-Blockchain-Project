@@ -60,7 +60,7 @@ app.post('/api/makeTransaction', (req,res) => {
     else {
         var tempPreceedingHash = curBlock.getHash();
         /*
-         * we should add a block to the blockchain when it's created (noting
+         * we add a block to the blockchain when it's created (noting
          * this for consistency)
          */
         curBlock = new Block(tempPreceedingHash);
@@ -68,6 +68,10 @@ app.post('/api/makeTransaction', (req,res) => {
         curBlock.addTransaction(newTransaction);
     }
     res.send("Successfully added new transaction");
+});
+
+app.get('/api/getBlockchain', (req, res) => {
+
 });
 
 const PORT = process.env.PORT || 5000;
