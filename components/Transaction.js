@@ -20,7 +20,7 @@ class Transaction {
     }
 
     signatureIsValid() {
-        return this.seller.verifyTransaction(this.signature, this.id);
+        return this.seller.verifyTransaction(this.id, this.signature);
     }
 
     /*

@@ -85,7 +85,12 @@ app.post('/api/makeTransaction', (req,res) => {
                 if(giver!=null && taker !=null) break;
             }
         }
+        console.log(giver.getName());
+        console.log(taker.getName());
         var newTransaction = new Transaction(req.body.buyerId, giver, req.body.amount);
+
+        console.log(newTransaction.getId());
+        console.log(typeof giver.signTransaction(newTransaction.getId()));
 
         if(req.body.transactionSimType == "signed") {
             newTransaction.signTransaction(giver.signTransaction(newTransaction.getId())); // this is the signature
