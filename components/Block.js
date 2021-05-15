@@ -34,7 +34,7 @@ class Block{
         {
             this.data.push(transaction);
             transaction.updateNodesWealth();
-            transaction.updateStat("completed");
+            transaction.updateStatus("completed");
         }
     }
 

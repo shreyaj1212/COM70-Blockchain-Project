@@ -68,10 +68,10 @@ class User {
      * id is the transaction id
      */
     signTransaction(id) {
-        if(Math.floor(Math.random()*4)<3)
+        // if(Math.floor(Math.random()*4)<3)
          return createHmac('sha256', this.secretKey).update(id).digest('hex');
-        else
-         return null;
+        // else
+        //  return null;
 
     }
 
@@ -87,6 +87,7 @@ class User {
     verifyTransaction(id, signature)
     {
         return signature!=null&&signature == createHmac('sha256', this.secretKey).update(id).digest('hex');
+        console.log(signature + " = " + createHmac('sha256', this.secretKey).update(id).digest('hex'));
     }
 
     compProof()

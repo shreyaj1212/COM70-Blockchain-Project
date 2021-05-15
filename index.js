@@ -87,10 +87,14 @@ app.post('/api/makeTransaction', (req,res) => {
         }
         console.log(giver.getName());
         console.log(taker.getName());
+        
         var newTransaction = new Transaction(req.body.buyerId, giver, req.body.amount);
 
+        console.log("Giver Secret Key: " + giver.getKey());
         console.log(newTransaction.getId());
-        console.log(typeof giver.signTransaction(newTransaction.getId()));
+        console.log(giver.signTransaction(newTransaction.getId()));
+
+        console.log(req.body.transactionSimType);
 
         if(req.body.transactionSimType == "signed") {
             newTransaction.signTransaction(giver.signTransaction(newTransaction.getId())); // this is the signature
@@ -106,9 +110,9 @@ app.post('/api/makeTransaction', (req,res) => {
             res.send("Cannot add new transaction because signature is invalid");
         }
     
-        if(!newTransaction.updateNodesWealth()) {
-            res.send("Could not add new transaction due to insufficient funds");
-        }
+        // if(!newTransaction.updateNodesWealth()) {
+        //     res.send("Could not add new transaction due to insufficient funds");
+        // }
 
         // ADDING TO BLOCKCHAIN
         if(curBlock.canAddTrans()) {
@@ -128,7 +132,7 @@ app.post('/api/makeTransaction', (req,res) => {
             res.send(req.body.sellerId + " gave " + req.body.buyerId +" " + req.body.amount + " coins.");
         }
         else if(req.body.transactionSimType == "fraud") {
-            newTransaction.signTransaction(uuid.v4());
+            res.send("nah fraud");
         }
     }
     
