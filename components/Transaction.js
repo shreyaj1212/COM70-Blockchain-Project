@@ -64,9 +64,5 @@ class Transaction {
     }
 }
 
-let u1 = new User(5000, undefined, undefined);
-let u2 = new User(2000, undefined, undefined);
-let t = new Transaction(u1, u2, 1000);
-t.updateNodesWealth();
 module.exports = Transaction;
 

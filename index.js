@@ -106,6 +106,9 @@ app.post('/api/makeTransaction', (req,res) => {
             res.send("how did this happen");
         }
 
+        console.log("buyer seller type before if statement");
+        console.log(typeof buyer);
+        console.log(typeof seller);
         if(!newTransaction.signatureIsValid()) {
             res.send("Cannot add new transaction because signature is invalid");
         }
