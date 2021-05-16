@@ -85,16 +85,9 @@ app.post('/api/makeTransaction', (req,res) => {
                 if(giver!=null && taker !=null) break;
             }
         }
-        console.log(giver.getName());
-        console.log(taker.getName());
         
-        var newTransaction = new Transaction(req.body.buyerId, giver, req.body.amount);
-
-        console.log("Giver Secret Key: " + giver.getKey());
-        console.log(newTransaction.getId());
-        console.log(giver.signTransaction(newTransaction.getId()));
-
-        console.log(req.body.transactionSimType);
+        
+        var newTransaction = new Transaction(taker, giver, req.body.amount);
 
         if(req.body.transactionSimType == "signed") {
             newTransaction.signTransaction(giver.signTransaction(newTransaction.getId())); // this is the signature
@@ -106,17 +99,12 @@ app.post('/api/makeTransaction', (req,res) => {
             res.send("how did this happen");
         }
 
-        console.log("buyer seller type before if statement");
-        console.log(typeof buyer);
-        console.log(typeof seller);
+        // Making Sure signature is valid
         if(!newTransaction.signatureIsValid()) {
             res.send("Cannot add new transaction because signature is invalid");
         }
-    
-        console.log("take 1");
-        console.log(newTransaction.updateNodesWealth());
-
-        console.log("if statement - take 2");
+        
+        // updating the wealth of the nodes
         if(!newTransaction.updateNodesWealth()) {
             res.send("Could not add new transaction due to insufficient funds");
         }
@@ -135,7 +123,6 @@ app.post('/api/makeTransaction', (req,res) => {
             blockchain.addNewBlock(curBlock);
             curBlock.addTransaction(newTransaction);
         }
-        console.log("it gets to checkpoint 3");
         if(req.body.transactionSimType == "signed") {
             res.send(req.body.sellerId + " gave " + req.body.buyerId +" " + req.body.amount + " coins." + giver.getName() + " now has "
             + giver.getWealth() + " coins.");

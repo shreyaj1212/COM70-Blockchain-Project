@@ -31,15 +31,9 @@ class Transaction {
      * after verifying that signatures are valid)
      */
     updateNodesWealth() {
-        console.log("got into updateNodesWealth");
         if(!this.seller.updateBalance(-1*this.amt)) return false;
-        console.log("did not return false");
-        console.log(typeof seller);
-        console.log(typeof buyer);
         this.buyer.updateBalance(this.amt);
-        console.log("wealths for both updated");
         this.updateStatus("moneyTransferred;NotInBlockYet");
-        console.log("transaction status updated");
         return true;
     }
 

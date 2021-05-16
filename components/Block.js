@@ -33,7 +33,7 @@ class Block{
         if(transaction.signatureIsValid())
         {
             this.data.push(transaction);
-            transaction.updateNodesWealth();
+            // transaction.updateNodesWealth();
             transaction.updateStatus("completed");
         }
     }
