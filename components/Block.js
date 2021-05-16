@@ -3,7 +3,7 @@ const {
     createHmac,
   } = require('crypto');
 
-const  MAX_NUM_TRANSACTIONS = 5;
+const  MAX_NUM_TRANSACTIONS = 1;
 
 class Block{
     
