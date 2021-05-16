@@ -97,7 +97,6 @@ class User {
     {
         //come up with random string
         let rand = uuid.v4();
-        console.log(rand);
         if(Number(createHmac('sha256', rand).digest('hex').substr(0,1))<5)
         {
             return rand;
