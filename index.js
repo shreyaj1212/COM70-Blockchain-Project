@@ -27,11 +27,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 // Homepage Route
+var bcChain = blockchain.getChain();
 app.get('/', (req, res) =>
   res.render('index', {
     title: 'Blockchain Simulation',
     users,
-    blockchain
+    bcChain
   })
 );
 
@@ -65,7 +66,7 @@ app.post('/api/makeTransaction', (req,res) => {
     * and instead of req.body.signature, generate a random signature that should not work
     */
 
-    if(req.body.transactionSimType == "not signed") {
+    if(req.body.transactionSimType == "not signed" || req.body.transactionSimType == "") {
         res.send("The person giving the coins has refused to sign this transaction. The transaction will thus not go through. ");
     }
     else {

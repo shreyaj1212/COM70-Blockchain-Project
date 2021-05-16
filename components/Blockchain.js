@@ -9,6 +9,10 @@ class Blockchain {
         this.chain = [];
     }
 
+    getChain() {
+        return this.chain;
+    }
+
     lastBlock()
     {
         return this.chain[this.chain.length-1];

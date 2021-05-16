@@ -44,10 +44,12 @@
 
 <h3 class="mt-4">View The Blockchain So Far</h3>
 <ul class="list-group mb-4">
-    {{#each blockchain}}
-    <li class="list-group-item">{{this.data}}: {{this.hash}}</li>
+    {{#each bcChain}}
+    <li class="list-group-item">
+        {{#each this.data}}
+        <p>{{this.seller.ipAddress}} gave {{this.buyer.ipAddress}} {{this.amt}} coins.</p>
+        {{/each}}
+    </li>
     {{/each}}
 </ul>
-<form action="/api/getBlockchain" method="GET" class="mb-4">
-    <input type="submit" value="Get Blockchain" class="btn btn-primary btn-block">
-</form>
+
