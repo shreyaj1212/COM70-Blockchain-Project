@@ -11,12 +11,12 @@ class Blockchain {
 
     lastBlock()
     {
-        return chain[chain.length-1];
+        return this.chain[this.chain.length-1];
     }
 
     addNewBlock(block1)
     {
-        if(block1.getPrecedingHash() === null||block1.getPrecedingHash() == lastBlock().getHash())
+        if(block1.getPrecedingHash() === null||block1.getPrecedingHash() == this.lastBlock().getHash())
         {
             this.chain.push(block1);
         }

@@ -81,7 +81,7 @@ class User {
 
     updateBalance (addThisAmt) {
         var temp = this.totalWealth + Number(addThisAmt);
-        if(temp > 0) {
+        if(temp >= 0) {
             this.totalWealth = temp;
             return true;
         }

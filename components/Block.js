@@ -3,11 +3,14 @@ const {
     createHmac,
   } = require('crypto');
 
+const  MAX_NUM_TRANSACTIONS = 5;
+
 class Block{
+    
     constructor(precedingHash){
         // this.timestamp = timestamp;
         this.data = [];
-        this.maxTransactions = 20;
+        this.maxTransactions = MAX_NUM_TRANSACTIONS;
         this.precedingHash = precedingHash;
         this.hash = "";
         this.proofOfWork = "";
@@ -59,6 +62,11 @@ class Block{
     {
         return this.precedingHash;
     }
+
+    getData() {
+        return this.data;
+    }
+
 }
 
 module.exports = Block;

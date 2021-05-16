@@ -30,14 +30,10 @@ app.use(express.urlencoded({extended:false}));
 app.get('/', (req, res) =>
   res.render('index', {
     title: 'Blockchain Simulation',
-    users
+    users,
+    blockchain
   })
 );
-
-// // GET THE FRONT PAGE OF WEBSITE
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'public','index.html'));
-// });
 
 // VIEW ALL THE USERS
 app.get('/api/users', (req, res) => {
@@ -54,8 +50,6 @@ app.post('/api/makeUser', (req,res) => {
     console.log(users);
     console.log("*******");
     res.redirect('/');
-    // res.json(users);
-    // res.send("Added the new user successfully");
 }); 
 
 // MAKE NEW TRANSACTION
@@ -71,7 +65,9 @@ app.post('/api/makeTransaction', (req,res) => {
     * and instead of req.body.signature, generate a random signature that should not work
     */
 
-    if(req.body.transactionSimType == "not signed") res.send("nothing happens");
+    if(req.body.transactionSimType == "not signed") {
+        res.send("The person giving the coins has refused to sign this transaction. The transaction will thus not go through. ");
+    }
     else {
         var giver = null;
         var taker = null;
@@ -102,11 +98,13 @@ app.post('/api/makeTransaction', (req,res) => {
         // Making Sure signature is valid
         if(!newTransaction.signatureIsValid()) {
             res.send("Cannot add new transaction because signature is invalid");
+            return;
         }
         
         // updating the wealth of the nodes
         if(!newTransaction.updateNodesWealth()) {
             res.send("Could not add new transaction due to insufficient funds");
+            return;
         }
 
         // ADDING TO BLOCKCHAIN
@@ -124,8 +122,9 @@ app.post('/api/makeTransaction', (req,res) => {
             curBlock.addTransaction(newTransaction);
         }
         if(req.body.transactionSimType == "signed") {
-            res.send(req.body.sellerId + " gave " + req.body.buyerId +" " + req.body.amount + " coins." + giver.getName() + " now has "
+            console.log(req.body.sellerId + " gave " + req.body.buyerId +" " + req.body.amount + " coins. " + giver.getName() + " now has "
             + giver.getWealth() + " coins.");
+            res.redirect('/');
         }
         else if(req.body.transactionSimType == "fraud") {
             res.send("nah fraud");

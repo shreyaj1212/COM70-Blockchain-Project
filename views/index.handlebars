@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <p>By Shreya Jain and Grace Luettgen</p>
 
-<h3 class="mt-4">Add A User to the Simulation</h3>
+<h3 class="mt-4">Add a User to the Simulation</h3>
 <form action="/api/makeUser" method="POST" class="mb-4">
     <div class="form-group">
          <label for="name">Name</label>
@@ -43,6 +43,11 @@
 </form>
 
 <h3 class="mt-4">View The Blockchain So Far</h3>
+<ul class="list-group mb-4">
+    {{#each blockchain}}
+    <li class="list-group-item">{{this.data}}: {{this.hash}}</li>
+    {{/each}}
+</ul>
 <form action="/api/getBlockchain" method="GET" class="mb-4">
     <input type="submit" value="Get Blockchain" class="btn btn-primary btn-block">
 </form>
