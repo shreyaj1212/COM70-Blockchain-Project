@@ -113,7 +113,22 @@ app.post('/api/makeTransaction', (req,res) => {
             curBlock.addTransaction(newTransaction);
         }
         else {
-            console.log(curBlock.getHash());
+            let i = 0;
+            while(true)
+            {
+                let proof = users[i].compProof();
+                if(proof)
+                {
+                    users[i].updateBalance(12);
+                    curBlock.setProofOfWork(proof);
+                    break;
+                }
+                if(i==users.length-1)
+                i=0;
+                else
+                i++;
+            }
+
             var tempPreceedingHash = curBlock.getHash();
             /*
             * we add a block to the blockchain when it's created (noting
