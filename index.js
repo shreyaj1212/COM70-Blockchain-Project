@@ -17,6 +17,7 @@ const blockchain = new Blockchain();
 const startBlock = new Block(null);
 var curBlock = startBlock;
 blockchain.addNewBlock(curBlock);
+const rewardCoinAmt = 10;
 
 // handlebars middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -119,7 +120,8 @@ app.post('/api/makeTransaction', (req,res) => {
                 let proof = users[i].compProof();
                 if(proof)
                 {
-                    users[i].updateBalance(12);
+                    users[i].updateBalance(rewardCoinAmt);
+                    console.log(users[i].getName() + " computed the proof of work. They get " + rewardCoinAmt + " coins.");
                     curBlock.setProofOfWork(proof);
                     break;
                 }
