@@ -50,7 +50,7 @@ class Block{
     setProofOfWork(proof)
     {
         this.proofOfWork = proof;
-        this.hash = createHmac('sha256', proofOfWork).digest('hex');
+        this.hash = createHmac('sha256', this.proofOfWork).digest('hex');
     }
 
     getHash()
