@@ -46,9 +46,12 @@
 <ul class="list-group mb-4">
     {{#each bcChain}}
     <li class="list-group-item">
+        <p>{{this.precedingHash}}</p>
+        <p>{{this.hash}}</p>
         {{#each this.data}}
         <p>{{this.seller.ipAddress}} gave {{this.buyer.ipAddress}} {{this.amt}} coins.</p>
         {{/each}}
+        <p>{{this.proofOfWork}}</p>
     </li>
     {{/each}}
 </ul>
