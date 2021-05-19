@@ -11,14 +11,6 @@ class User {
         this.secretKey = secretkey;
     }
 
-    /*// constructor for miners
-    constructor(isMiner) {
-        this.totalWealth = 0;
-        this.ipAddress = "";
-        this.isMiner = isMiner;
-        this.secretKey = "";
-    }*/
-
     getWealth() {
         return this.totalWealth;
     }
