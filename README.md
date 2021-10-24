@@ -16,7 +16,7 @@ Each Transaction has a buyer, a sellar, an amount of coin sold, and a signature 
 Each user is identified by its ipAddress. Each user has a secretKey which is used to generate a signature for a transaction (in each transaction, only the person who is losing money's secret key is needed to generate the signature). 
 
 <h2>index.js</h2>
-This is where all of the API work is located. There are routes to
+This is where all of the API work is located. There are routes to <br>
 1. get the homepage <br>
 2. view all the users (displayed on homepage) <br>
 3. add users to the simulation <br>
