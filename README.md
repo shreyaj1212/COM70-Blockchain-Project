@@ -31,6 +31,8 @@ Though we only have one page, we decided to add this feature for flexibility in 
 
 <h2>Demo</h2>
 
+Check out a video demo <a href="https://www.youtube.com/watch?v=kmJmriBQHOE">here</a>.
+
 the page a user arrives at
 ![Screen Shot 2021-10-24 at 2 15 27 PM](https://user-images.githubusercontent.com/32113511/138607348-90992083-7775-4d02-8ebc-56478c4c6e3a.png)
 
