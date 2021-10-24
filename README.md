@@ -62,7 +62,7 @@ Let's do this transaction again to demonstrate how many transactions can be stor
 
 ![Screen Shot 2021-10-24 at 2 18 55 PM](https://user-images.githubusercontent.com/32113511/138607546-ee2bd801-ce3d-4d12-9491-aaa79e9f40cd.png)
 
-Currently, there is no proofOfWork because there is only 1 block in the chain. When we add a new block, that proofOfWork will display. 
+Currently, there is no proofOfWork because there is only 1 block in the chain. When we add a new block, that proofOfWork will display. Similarly, because this is the first block, it does not have a precedingHash (and it never will). 
 
 Let's add RandomPerson to the simulation. RandomPerson starts with 0 coin, but Shreya and Grace both give RandomPerson 5 coin each. 
 
