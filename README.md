@@ -48,7 +48,7 @@ Now let's add Grace.
 
 ![add Grace](https://user-images.githubusercontent.com/32113511/138607440-27140d73-bbd7-4b4e-8e18-8d63835326f2.png)
 
-Now that Grace has been added, let's start a transaction. Let's start with an example where Shreya refuses to sign the transaction. In this case, the transaction will not occur. 
+Now that Grace has been added, let's start a transaction. Let's start with an example where Shreya refuses to sign the transaction. In this case, the transaction will not occur. In this simulation, the user can choose whether a transaction is signed or not to see what happens in either situation. 
 
 ![grace added, start transaction](https://user-images.githubusercontent.com/32113511/138607463-96425f3f-73cd-4ab8-8a58-25ae1d8290dc.png)
 
