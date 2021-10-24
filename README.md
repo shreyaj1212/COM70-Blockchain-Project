@@ -17,12 +17,12 @@ Each user is identified by its ipAddress. Each user has a secretKey which is use
 
 <h2>index.js</h2>
 This is where all of the API work is located. There are routes to
-1. get the homepage
-2. view all the users (displayed on homepage)
-3. add users to the simulation
-4. make new transactions between users in the simulation
-5. view the current blockchain based off of the transactions added in the simulation
-6. update a user's wealth
+1. get the homepage <br>
+2. view all the users (displayed on homepage) <br>
+3. add users to the simulation <br>
+4. make new transactions between users in the simulation <br>
+5. view the current blockchain based off of the transactions added in the simulation <br>
+6. update a user's wealth <br>
 
 public folder - includes index.html and style.css
 
