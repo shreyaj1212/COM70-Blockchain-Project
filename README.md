@@ -1,5 +1,7 @@
 # COM70-Blockchain-Project
 
+Check out a video demo <a href="https://www.youtube.com/watch?v=kmJmriBQHOE">here</a>.
+
 <h2>components</h2>
 This folder includes the components of our blockchain simulation: Block, Blockchain, Test, Transaction, and User
 
